@@ -65,9 +65,9 @@
                 <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Contact</a>
             </div>
 
-            <!-- Header Action Controls -->
+            <!-- Header Controls -->
             <div class="flex items-center gap-3">
-                <button onclick="openAddProjectModal()" class="px-3 py-1.5 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition shadow-sm flex items-center gap-1.5">
+                <button onclick="openProjectModal()" class="px-3 py-1.5 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition shadow-sm flex items-center gap-1.5">
                     <i class="fa-solid fa-plus"></i>
                     <span class="hidden sm:inline">Add Project</span>
                 </button>
@@ -98,7 +98,7 @@
                         <span>View Portfolio Projects</span>
                         <i class="fa-solid fa-arrow-down text-xs"></i>
                     </a>
-                    <button onclick="openAddProjectModal()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl shadow-lg shadow-emerald-600/20 transition flex items-center gap-2">
+                    <button onclick="openProjectModal()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl shadow-lg shadow-emerald-600/20 transition flex items-center gap-2">
                         <i class="fa-solid fa-images"></i>
                         <span>Upload Screenshots</span>
                     </button>
@@ -140,10 +140,10 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
                     <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Featured Projects & Screenshots</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mt-2">Click any screenshot to expand and cycle through multi-image galleries.</p>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2">Click any screenshot to expand image galleries, or click the edit icon to modify projects.</p>
                 </div>
                 <div class="flex flex-wrap items-center gap-3">
-                    <button onclick="openAddProjectModal()" class="px-4 py-2 text-sm font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm flex items-center gap-2">
+                    <button onclick="openProjectModal()" class="px-4 py-2 text-sm font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm flex items-center gap-2">
                         <i class="fa-solid fa-plus"></i>
                         <span>Add New Project</span>
                     </button>
@@ -309,23 +309,25 @@
     <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-sm text-slate-500 dark:text-slate-400">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p>© Khadra DJADJA. All rights reserved.</p>
-            <button onclick="openAddProjectModal()" class="text-xs text-brand-600 dark:text-brand-400 hover:underline">
+            <button onclick="openProjectModal()" class="text-xs text-brand-600 dark:text-brand-400 hover:underline">
                 <i class="fa-solid fa-gear mr-1"></i>Manage Portfolio Projects
             </button>
         </div>
     </footer>
 
-    <!-- ADD PROJECT MODAL -->
+    <!-- ADD/EDIT PROJECT MODAL -->
     <div id="projectModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
         <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-xl w-full p-6 shadow-2xl relative space-y-5 my-8">
             <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Add New Project</h3>
-                <button onclick="closeAddProjectModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white text-lg p-1">
+                <h3 id="modalHeaderTitle" class="text-xl font-bold text-slate-900 dark:text-white">Add New Project</h3>
+                <button onclick="closeProjectModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white text-lg p-1">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
-            <form id="addProjectForm" onsubmit="handleSaveProject(event)" class="space-y-4">
+            <form id="projectForm" onsubmit="handleSaveProject(event)" class="space-y-4">
+                <input type="hidden" id="editProjectId" value="">
+
                 <div>
                     <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Project Title</label>
                     <input type="text" id="pTitle" required placeholder="e.g. Sales Analytics Dashboard" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
@@ -356,21 +358,21 @@
                     <input type="text" id="pTech" placeholder="Power BI, SQL, Python, Excel" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
                 </div>
 
-                <!-- Screenshots Inputs -->
+                <!-- Screenshots Input -->
                 <div class="space-y-3 border-t border-slate-100 dark:border-slate-800 pt-3">
                     <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Project Screenshots (Multiple Supported)</label>
                     <div>
                         <input type="text" id="pImgUrls" placeholder="Paste Image URLs separated by commas (https://img1, https://img2)" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
                     </div>
-                    <div class="text-xs text-slate-400 text-center">or upload local images</div>
+                    <div class="text-xs text-slate-400 text-center">or upload local image files</div>
                     <div>
                         <input type="file" id="pImgFiles" accept="image/*" multiple class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 dark:file:bg-brand-950 dark:file:text-brand-400">
                     </div>
                 </div>
 
                 <div class="flex justify-end gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
-                    <button type="button" onclick="closeAddProjectModal()" class="px-4 py-2 text-xs font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">Cancel</button>
-                    <button type="submit" class="px-5 py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition shadow-sm">Save Project</button>
+                    <button type="button" onclick="closeProjectModal()" class="px-4 py-2 text-xs font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">Cancel</button>
+                    <button type="submit" class="px-5 py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition shadow-sm">Save Changes</button>
                 </div>
             </form>
         </div>
@@ -423,7 +425,7 @@
             }
         });
 
-        // Default Projects with Multiple Screenshots
+        // Default Projects
         const defaultProjects = [
             {
                 id: '1',
@@ -492,7 +494,6 @@
                 const images = p.images && p.images.length > 0 ? p.images : ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'];
                 const techBadges = p.tech.map(t => `<span class="px-2.5 py-1 rounded-md text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium">${t}</span>`).join(' ');
 
-                // Build thumbnail gallery preview strip for card
                 const thumbStrip = images.map((img, i) => `
                     <div class="h-12 flex-1 rounded-lg overflow-hidden border ${i === 0 ? 'border-brand-500' : 'border-transparent'} opacity-80 hover:opacity-100 transition cursor-pointer" onclick="openLightboxForProject('${p.id}', ${i})">
                         <img src="${img}" class="w-full h-full object-cover">
@@ -521,7 +522,10 @@
                             <div>
                                 <div class="flex items-center justify-between mb-2">
                                     <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-400">${p.tagLabel || p.category}</span>
-                                    <button onclick="deleteProject('${p.id}')" class="text-xs text-red-500 hover:text-red-700 p-1" title="Delete Project"><i class="fa-solid fa-trash"></i></button>
+                                    <div class="flex items-center gap-1">
+                                        <button onclick="editProject('${p.id}')" class="text-xs text-slate-500 hover:text-brand-600 p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800" title="Edit Project"><i class="fa-solid fa-pen"></i></button>
+                                        <button onclick="deleteProject('${p.id}')" class="text-xs text-red-500 hover:text-red-700 p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800" title="Delete Project"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
                                 </div>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white">${p.title}</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">${p.desc}</p>
@@ -549,21 +553,46 @@
             });
         });
 
-        // Add Project Modal Controls
-        function openAddProjectModal() {
+        // Open Modal (Add or Edit Mode)
+        function openProjectModal(editId = null) {
+            const form = document.getElementById('projectForm');
+            form.reset();
+            
+            if (editId) {
+                const project = getProjects().find(p => p.id === editId);
+                if (project) {
+                    document.getElementById('modalHeaderTitle').innerText = 'Edit Project';
+                    document.getElementById('editProjectId').value = project.id;
+                    document.getElementById('pTitle').value = project.title;
+                    document.getElementById('pCategory').value = project.category;
+                    document.getElementById('pTagLabel').value = project.tagLabel || '';
+                    document.getElementById('pDesc').value = project.desc;
+                    document.getElementById('pTech').value = project.tech ? project.tech.join(', ') : '';
+                    document.getElementById('pImgUrls').value = project.images ? project.images.join(', ') : '';
+                }
+            } else {
+                document.getElementById('modalHeaderTitle').innerText = 'Add New Project';
+                document.getElementById('editProjectId').value = '';
+            }
+
             document.getElementById('projectModal').classList.remove('hidden');
             document.getElementById('projectModal').classList.add('flex');
         }
 
-        function closeAddProjectModal() {
+        function closeProjectModal() {
             document.getElementById('projectModal').classList.add('hidden');
             document.getElementById('projectModal').classList.remove('flex');
-            document.getElementById('addProjectForm').reset();
+            document.getElementById('projectForm').reset();
         }
 
-        // Save New Project with Multiple Screenshots
+        function editProject(id) {
+            openProjectModal(id);
+        }
+
+        // Save Project (Handles both Create & Update)
         function handleSaveProject(e) {
             e.preventDefault();
+            const editId = document.getElementById('editProjectId').value;
             const title = document.getElementById('pTitle').value;
             const category = document.getElementById('pCategory').value;
             const tagLabel = document.getElementById('pTagLabel').value || category;
@@ -598,19 +627,40 @@
             }
 
             function commitProject(imgArray) {
-                const projects = getProjects();
-                const newProject = {
-                    id: Date.now().toString(),
-                    title,
-                    category,
-                    tagLabel,
-                    desc,
-                    tech,
-                    images: imgArray.length > 0 ? imgArray : ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80']
-                };
-                projects.unshift(newProject);
+                let projects = getProjects();
+
+                if (editId) {
+                    // Update existing project
+                    projects = projects.map(p => {
+                        if (p.id === editId) {
+                            return {
+                                ...p,
+                                title,
+                                category,
+                                tagLabel,
+                                desc,
+                                tech,
+                                images: imgArray.length > 0 ? imgArray : p.images
+                            };
+                        }
+                        return p;
+                    });
+                } else {
+                    // Create new project
+                    const newProject = {
+                        id: Date.now().toString(),
+                        title,
+                        category,
+                        tagLabel,
+                        desc,
+                        tech,
+                        images: imgArray.length > 0 ? imgArray : ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80']
+                    };
+                    projects.unshift(newProject);
+                }
+
                 saveProjects(projects);
-                closeAddProjectModal();
+                closeProjectModal();
             }
         }
 
@@ -642,7 +692,6 @@
             document.getElementById('lbImage').src = currentGallery[currentIndex];
             document.getElementById('lbCounter').innerText = `Image ${currentIndex + 1} of ${currentGallery.length}`;
 
-            // Render bottom thumbnail strip inside lightbox
             const thumbsContainer = document.getElementById('lbThumbnails');
             thumbsContainer.innerHTML = currentGallery.map((img, i) => `
                 <img src="${img}" class="h-12 w-16 object-cover rounded border-2 ${i === currentIndex ? 'border-brand-500 scale-105' : 'border-transparent opacity-60'} cursor-pointer transition" onclick="jumpToImage(${i})">
@@ -669,7 +718,7 @@
             document.getElementById('lightboxModal').classList.remove('flex');
         }
 
-        // Keyboard Arrow Controls
+        // Keyboard Navigation
         document.addEventListener('keydown', (e) => {
             const modal = document.getElementById('lightboxModal');
             if (!modal.classList.contains('hidden')) {

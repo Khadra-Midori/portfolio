@@ -311,4 +311,378 @@
             <p>© Khadra DJADJA. All rights reserved.</p>
             <button onclick="openAddProjectModal()" class="text-xs text-brand-600 dark:text-brand-400 hover:underline">
                 <i class="fa-solid fa-gear mr-1"></i>Manage Portfolio Projects
-            </
+            </button>
+        </div>
+    </footer>
+
+    <!-- ADD PROJECT MODAL -->
+    <div id="projectModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-xl w-full p-6 shadow-2xl relative space-y-5 my-8">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Add New Project</h3>
+                <button onclick="closeAddProjectModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white text-lg p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="addProjectForm" onsubmit="handleSaveProject(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Project Title</label>
+                    <input type="text" id="pTitle" required placeholder="e.g. Sales Analytics Dashboard" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Category</label>
+                        <select id="pCategory" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
+                            <option value="analytics">Analytics & Data</option>
+                            <option value="operations">Ad Operations</option>
+                            <option value="engineering">Engineering</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Tag Label</label>
+                        <input type="text" id="pTagLabel" placeholder="e.g. Looker Studio" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Project Description</label>
+                    <textarea id="pDesc" rows="3" required placeholder="Describe project features, metrics, and achievements..." class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Technologies (comma-separated)</label>
+                    <input type="text" id="pTech" placeholder="Power BI, SQL, Python, Excel" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
+                </div>
+
+                <!-- Screenshots Inputs -->
+                <div class="space-y-3 border-t border-slate-100 dark:border-slate-800 pt-3">
+                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Project Screenshots (Multiple Supported)</label>
+                    <div>
+                        <input type="text" id="pImgUrls" placeholder="Paste Image URLs separated by commas (https://img1, https://img2)" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
+                    </div>
+                    <div class="text-xs text-slate-400 text-center">or upload local images</div>
+                    <div>
+                        <input type="file" id="pImgFiles" accept="image/*" multiple class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 dark:file:bg-brand-950 dark:file:text-brand-400">
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+                    <button type="button" onclick="closeAddProjectModal()" class="px-4 py-2 text-xs font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">Cancel</button>
+                    <button type="submit" class="px-5 py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition shadow-sm">Save Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX GALLERY MODAL -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex-col items-center justify-between p-4 sm:p-8">
+        <div class="w-full flex items-center justify-between max-w-6xl text-white">
+            <div>
+                <h4 id="lbTitle" class="font-bold text-lg">Project Screenshots</h4>
+                <span id="lbCounter" class="text-xs text-slate-400">Image 1 of 1</span>
+            </div>
+            <button onclick="closeLightbox()" class="text-2xl text-slate-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="relative max-w-5xl w-full flex-1 flex items-center justify-center my-4 group">
+            <button onclick="prevImage()" class="absolute left-2 z-10 w-12 h-12 rounded-full bg-slate-900/60 hover:bg-slate-800 text-white flex items-center justify-center text-xl transition">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            
+            <img id="lbImage" src="" alt="Screenshot" class="max-h-[75vh] max-w-full object-contain rounded-lg shadow-2xl transition-all duration-300">
+
+            <button onclick="nextImage()" class="absolute right-2 z-10 w-12 h-12 rounded-full bg-slate-900/60 hover:bg-slate-800 text-white flex items-center justify-center text-xl transition">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div id="lbThumbnails" class="flex gap-2 max-w-2xl overflow-x-auto p-2"></div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Dark Mode Toggle
+        const themeToggleBtn = document.getElementById('themeToggle');
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+
+        // Default Projects with Multiple Screenshots
+        const defaultProjects = [
+            {
+                id: '1',
+                title: 'ChargeFUZE Inventory & Performance Dashboard',
+                category: 'analytics',
+                tagLabel: 'Looker Studio & Power BI',
+                desc: 'Comprehensive inventory management and ad delivery performance auditing dashboards with automated metrics updates.',
+                tech: ['Looker Studio', 'Power BI', 'Excel VBA', 'Google Sheets'],
+                images: [
+                    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80'
+                ]
+            },
+            {
+                id: '2',
+                title: 'Vertex SAP B1 Maintenance Structure (GMAO)',
+                category: 'engineering',
+                tagLabel: 'SAP B1 & Operations',
+                desc: 'Technical procedures, asset hierarchy trees, and preventive maintenance modules built inside SAP Business One.',
+                tech: ['SAP B1', 'GMAO', 'AutoCAD', 'Excel'],
+                images: [
+                    'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80'
+                ]
+            },
+            {
+                id: '3',
+                title: 'Water Network Hydraulic Simulation',
+                category: 'engineering',
+                tagLabel: 'Epanet & MapInfo GIS',
+                desc: 'Pressure node simulation, flow capacity mapping, and GIS network modeling for municipal water distribution systems.',
+                tech: ['Epanet', 'MapInfo GIS', 'AutoCAD', 'Excel'],
+                images: [
+                    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80'
+                ]
+            }
+        ];
+
+        // Retrieve / Save Local Projects
+        function getProjects() {
+            const saved = localStorage.getItem('kd_portfolio_projects');
+            return saved ? JSON.parse(saved) : defaultProjects;
+        }
+
+        function saveProjects(projects) {
+            localStorage.setItem('kd_portfolio_projects', JSON.stringify(projects));
+            renderProjects();
+        }
+
+        // Active Lightbox State
+        let currentGallery = [];
+        let currentIndex = 0;
+        let currentTitle = '';
+
+        // Render Projects Grid
+        function renderProjects(filterCategory = 'all') {
+            const grid = document.getElementById('projectsGrid');
+            const projects = getProjects();
+            grid.innerHTML = '';
+
+            projects.forEach(p => {
+                if (filterCategory !== 'all' && p.category !== filterCategory) return;
+
+                const images = p.images && p.images.length > 0 ? p.images : ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'];
+                const techBadges = p.tech.map(t => `<span class="px-2.5 py-1 rounded-md text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium">${t}</span>`).join(' ');
+
+                // Build thumbnail gallery preview strip for card
+                const thumbStrip = images.map((img, i) => `
+                    <div class="h-12 flex-1 rounded-lg overflow-hidden border ${i === 0 ? 'border-brand-500' : 'border-transparent'} opacity-80 hover:opacity-100 transition cursor-pointer" onclick="openLightboxForProject('${p.id}', ${i})">
+                        <img src="${img}" class="w-full h-full object-cover">
+                    </div>
+                `).join('');
+
+                const cardHtml = `
+                    <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                        <!-- Main Cover Screenshot -->
+                        <div class="relative h-48 bg-slate-200 dark:bg-slate-800 overflow-hidden cursor-pointer group" onclick="openLightboxForProject('${p.id}', 0)">
+                            <img src="${images[0]}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-sm font-semibold gap-2">
+                                <i class="fa-solid fa-images"></i>
+                                <span>View ${images.length} Screenshot${images.length > 1 ? 's' : ''}</span>
+                            </div>
+                            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-2 py-1 rounded-md font-medium"><i class="fa-regular fa-image mr-1"></i>${images.length}</span>
+                        </div>
+
+                        <!-- Gallery Thumbnails Strip -->
+                        <div class="p-3 bg-slate-50 dark:bg-slate-800/40 border-b border-slate-100 dark:border-slate-800 flex gap-2">
+                            ${thumbStrip}
+                        </div>
+
+                        <!-- Card Details -->
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-400">${p.tagLabel || p.category}</span>
+                                    <button onclick="deleteProject('${p.id}')" class="text-xs text-red-500 hover:text-red-700 p-1" title="Delete Project"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">${p.title}</h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">${p.desc}</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2 pt-2">${techBadges}</div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHtml;
+            });
+        }
+
+        // Category Filter Buttons
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-600', 'text-white');
+                    b.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                });
+                btn.classList.add('bg-brand-600', 'text-white');
+                btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+
+                renderProjects(btn.getAttribute('data-filter'));
+            });
+        });
+
+        // Add Project Modal Controls
+        function openAddProjectModal() {
+            document.getElementById('projectModal').classList.remove('hidden');
+            document.getElementById('projectModal').classList.add('flex');
+        }
+
+        function closeAddProjectModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+            document.getElementById('projectModal').classList.remove('flex');
+            document.getElementById('addProjectForm').reset();
+        }
+
+        // Save New Project with Multiple Screenshots
+        function handleSaveProject(e) {
+            e.preventDefault();
+            const title = document.getElementById('pTitle').value;
+            const category = document.getElementById('pCategory').value;
+            const tagLabel = document.getElementById('pTagLabel').value || category;
+            const desc = document.getElementById('pDesc').value;
+            const techStr = document.getElementById('pTech').value;
+            const tech = techStr ? techStr.split(',').map(s => s.trim()) : ['General'];
+            
+            const urlInputs = document.getElementById('pImgUrls').value;
+            const fileInput = document.getElementById('pImgFiles').files;
+
+            let uploadedImages = [];
+
+            if (urlInputs.trim()) {
+                uploadedImages = urlInputs.split(',').map(u => u.trim()).filter(u => u.length > 0);
+            }
+
+            if (fileInput.length > 0) {
+                let loadedCount = 0;
+                for (let i = 0; i < fileInput.length; i++) {
+                    const reader = new FileReader();
+                    reader.onload = function(evt) {
+                        uploadedImages.push(evt.target.result);
+                        loadedCount++;
+                        if (loadedCount === fileInput.length) {
+                            commitProject(uploadedImages);
+                        }
+                    };
+                    reader.readAsDataURL(fileInput[i]);
+                }
+            } else {
+                commitProject(uploadedImages);
+            }
+
+            function commitProject(imgArray) {
+                const projects = getProjects();
+                const newProject = {
+                    id: Date.now().toString(),
+                    title,
+                    category,
+                    tagLabel,
+                    desc,
+                    tech,
+                    images: imgArray.length > 0 ? imgArray : ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80']
+                };
+                projects.unshift(newProject);
+                saveProjects(projects);
+                closeAddProjectModal();
+            }
+        }
+
+        // Delete Project
+        function deleteProject(id) {
+            if (confirm('Are you sure you want to remove this project?')) {
+                const projects = getProjects().filter(p => p.id !== id);
+                saveProjects(projects);
+            }
+        }
+
+        // Lightbox Gallery Functions
+        function openLightboxForProject(projectId, startIdx = 0) {
+            const project = getProjects().find(p => p.id === projectId);
+            if (!project) return;
+
+            currentGallery = project.images && project.images.length > 0 ? project.images : ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'];
+            currentIndex = startIdx;
+            currentTitle = project.title;
+
+            document.getElementById('lbTitle').innerText = currentTitle;
+            updateLightboxView();
+
+            document.getElementById('lightboxModal').classList.remove('hidden');
+            document.getElementById('lightboxModal').classList.add('flex');
+        }
+
+        function updateLightboxView() {
+            document.getElementById('lbImage').src = currentGallery[currentIndex];
+            document.getElementById('lbCounter').innerText = `Image ${currentIndex + 1} of ${currentGallery.length}`;
+
+            // Render bottom thumbnail strip inside lightbox
+            const thumbsContainer = document.getElementById('lbThumbnails');
+            thumbsContainer.innerHTML = currentGallery.map((img, i) => `
+                <img src="${img}" class="h-12 w-16 object-cover rounded border-2 ${i === currentIndex ? 'border-brand-500 scale-105' : 'border-transparent opacity-60'} cursor-pointer transition" onclick="jumpToImage(${i})">
+            `).join('');
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % currentGallery.length;
+            updateLightboxView();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+            updateLightboxView();
+        }
+
+        function jumpToImage(idx) {
+            currentIndex = idx;
+            updateLightboxView();
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+            document.getElementById('lightboxModal').classList.remove('flex');
+        }
+
+        // Keyboard Arrow Controls
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('lightboxModal');
+            if (!modal.classList.contains('hidden')) {
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        // Initialize on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProjects();
+        });
+    </script>
+</body>
+</html>

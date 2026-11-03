@@ -65,13 +65,12 @@
                 <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Contact</a>
             </div>
 
-            <!-- Header Controls -->
+            <!-- Header Social & Theme Toggle -->
             <div class="flex items-center gap-3">
-                <button onclick="openProjectModal()" class="px-3.5 py-1.5 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition shadow-sm flex items-center gap-1.5">
-                    <i class="fa-solid fa-plus"></i>
-                    <span class="hidden sm:inline">Add Project</span>
-                </button>
-                <button id="themeToggle" class="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle Theme">
+                <a href="https://www.linkedin.com/in/khadra-djadja-13aba11b2/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-[#0a66c2] hover:bg-[#084e96] text-white transition shadow-sm flex items-center justify-center text-sm" title="LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <button id="themeToggle" class="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
                     <i class="fa-solid fa-moon dark:hidden"></i>
                     <i class="fa-solid fa-sun hidden dark:block"></i>
                 </button>
@@ -98,10 +97,10 @@
                         <span>View Portfolio Projects</span>
                         <i class="fa-solid fa-arrow-down text-xs"></i>
                     </a>
-                    <button onclick="openProjectModal()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl shadow-lg shadow-emerald-600/20 transition flex items-center gap-2">
-                        <i class="fa-solid fa-plus"></i>
-                        <span>Add New Project</span>
-                    </button>
+                    <a href="https://www.linkedin.com/in/khadra-djadja-13aba11b2/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-[#0a66c2] hover:bg-[#084e96] text-white font-medium rounded-xl shadow-lg shadow-[#0a66c2]/20 transition flex items-center gap-2">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <span>Connect on LinkedIn</span>
+                    </a>
                 </div>
             </div>
             <div class="lg:col-span-5">
@@ -140,26 +139,20 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
                     <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Featured Projects & Screenshots</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mt-2">Use the pen icon (<i class="fa-solid fa-pen text-brand-600"></i>) on any project card to edit or add new screenshots.</p>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2">Click any screenshot to expand image galleries in full resolution.</p>
                 </div>
-                <div class="flex flex-wrap items-center gap-3">
-                    <button onclick="openProjectModal()" class="px-4 py-2 text-sm font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm flex items-center gap-2">
-                        <i class="fa-solid fa-plus"></i>
-                        <span>Add Project</span>
-                    </button>
-                    <!-- Category Filters -->
-                    <div class="flex flex-wrap gap-1.5" id="filterContainer">
-                        <button data-filter="all" class="filter-btn px-3 py-2 text-xs font-medium rounded-lg bg-brand-600 text-white shadow-sm">All</button>
-                        <button data-filter="analytics" class="filter-btn px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50">Analytics</button>
-                        <button data-filter="operations" class="filter-btn px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50">Ad Ops</button>
-                        <button data-filter="engineering" class="filter-btn px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50">Engineering</button>
-                    </div>
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-1.5" id="filterContainer">
+                    <button data-filter="all" class="filter-btn px-3 py-2 text-xs font-medium rounded-lg bg-brand-600 text-white shadow-sm">All</button>
+                    <button data-filter="analytics" class="filter-btn px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50">Analytics</button>
+                    <button data-filter="operations" class="filter-btn px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50">Ad Ops</button>
+                    <button data-filter="engineering" class="filter-btn px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50">Engineering</button>
                 </div>
             </div>
 
             <!-- Dynamic Projects Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
-                <!-- Cards populated dynamically via JavaScript -->
+                <!-- Populated via JavaScript -->
             </div>
         </div>
     </section>
@@ -309,80 +302,13 @@
     <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-sm text-slate-500 dark:text-slate-400">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p>© Khadra DJADJA. All rights reserved.</p>
-            <button onclick="openProjectModal()" class="text-xs text-brand-600 dark:text-brand-400 hover:underline">
-                <i class="fa-solid fa-gear mr-1"></i>Manage Portfolio Projects
-            </button>
-        </div>
-    <!-- Inside Footer -->
-    <div class="flex items-center gap-4">
-        <a href="https://www.linkedin.com/in/khadra-djadja-13aba11b2/" target="_blank" rel="noopener noreferrer" class="text-xs text-[#0a66c2] hover:underline font-semibold flex items-center gap-1">
-            <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
-        </a>
-    </div>
-    </footer>
-
-    <!-- ADD/EDIT PROJECT MODAL -->
-    <div id="projectModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-xl w-full p-6 shadow-2xl relative space-y-5 my-8">
-            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
-                <h3 id="modalHeaderTitle" class="text-xl font-bold text-slate-900 dark:text-white">Add New Project</h3>
-                <button onclick="closeProjectModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white text-lg p-1">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+            <div class="flex items-center gap-4">
+                <a href="https://www.linkedin.com/in/khadra-djadja-13aba11b2/" target="_blank" rel="noopener noreferrer" class="text-xs text-[#0a66c2] hover:underline font-semibold flex items-center gap-1">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
             </div>
-
-            <form id="projectForm" onsubmit="handleSaveProject(event)" class="space-y-4">
-                <input type="hidden" id="editProjectId" value="">
-
-                <div>
-                    <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Project Title</label>
-                    <input type="text" id="pTitle" required placeholder="e.g. Sales Analytics Dashboard" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Category</label>
-                        <select id="pCategory" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
-                            <option value="analytics">Analytics & Data</option>
-                            <option value="operations">Ad Operations</option>
-                            <option value="engineering">Engineering</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Tag Label</label>
-                        <input type="text" id="pTagLabel" placeholder="e.g. Looker Studio" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Project Description</label>
-                    <textarea id="pDesc" rows="3" required placeholder="Describe project features, metrics, and achievements..." class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none"></textarea>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Technologies (comma-separated)</label>
-                    <input type="text" id="pTech" placeholder="Power BI, SQL, Python, Excel" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
-                </div>
-
-                <!-- Screenshots Input -->
-                <div class="space-y-3 border-t border-slate-100 dark:border-slate-800 pt-3">
-                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Project Screenshots (Multiple Supported)</label>
-                    <div>
-                        <input type="text" id="pImgUrls" placeholder="Paste Image URLs separated by commas (https://img1, https://img2)" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
-                    </div>
-                    <div class="text-xs text-slate-400 text-center">or upload local image files</div>
-                    <div>
-                        <input type="file" id="pImgFiles" accept="image/*" multiple class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 dark:file:bg-brand-950 dark:file:text-brand-400">
-                    </div>
-                </div>
-
-                <div class="flex justify-end gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
-                    <button type="button" onclick="closeProjectModal()" class="px-4 py-2 text-xs font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">Cancel</button>
-                    <button type="submit" class="px-5 py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition shadow-sm">Save Changes</button>
-                </div>
-            </form>
         </div>
-    </div>
+    </footer>
 
     <!-- LIGHTBOX GALLERY MODAL -->
     <div id="lightboxModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex-col items-center justify-between p-4 sm:p-8">
@@ -431,70 +357,58 @@
             }
         });
 
-        // Default Projects Data
-        const defaultProjects = [
+        // Exact Hardcoded Real Portfolio Projects
+        const publicProjects = [
             {
                 id: '1',
-                title: 'ChargeFUZE Inventory & Performance Dashboard',
+                title: 'ISO 22000 & PRP Quality Assurance & Compliance Dashboard',
                 category: 'analytics',
-                tagLabel: 'Looker Studio & Power BI',
-                desc: 'Comprehensive inventory management and ad delivery performance auditing dashboards with automated metrics updates.',
-                tech: ['Looker Studio', 'Power BI', 'Excel VBA', 'Google Sheets'],
+                tagLabel: 'Excel',
+                desc: 'An advanced, multi-sheet Excel-based quality management and auditing dashboard designed to monitor compliance with ISO 22000 Food Safety Standards.',
+                tech: ['Advanced Excel', 'VBA', 'Data Analysis', 'ISO Standards'],
                 images: [
                     'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-                    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-                    'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80'
+                    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'
                 ]
             },
             {
                 id: '2',
-                title: 'Vertex SAP B1 Maintenance Structure (GMAO)',
-                category: 'engineering',
-                tagLabel: 'SAP B1 & Operations',
-                desc: 'Technical procedures, asset hierarchy trees, and preventive maintenance modules built inside SAP Business One.',
-                tech: ['SAP B1', 'GMAO', 'AutoCAD', 'Excel'],
+                title: 'Spotify Music Analytics & Insights Dashboard',
+                category: 'analytics',
+                tagLabel: 'Power BI',
+                desc: 'An end-to-end interactive Power BI business intelligence solution designed to uncover streaming trends, track artist performance metrics, and analyze catalog distribution patterns.',
+                tech: ['Power BI', 'DAX', 'Data Visualization', 'SQL'],
                 images: [
-                    'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
-                    'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80'
+                    'https://images.unsplash.com/photo-1614680376593-902f749f7b2c?auto=format&fit=crop&w=800&q=80'
                 ]
             },
             {
                 id: '3',
-                title: 'Water Network Hydraulic Simulation',
-                category: 'engineering',
-                tagLabel: 'Epanet & MapInfo GIS',
-                desc: 'Pressure node simulation, flow capacity mapping, and GIS network modeling for municipal water distribution systems.',
-                tech: ['Epanet', 'MapInfo GIS', 'AutoCAD', 'Excel'],
+                title: 'Business_Analytics_Dashboard',
+                category: 'analytics',
+                tagLabel: 'Excel',
+                desc: 'Executive Financial & Operations Reporting System - Overview: Developed an interactive, multi-sheet business intelligence workbook in Excel to track global revenue streams, multi-channel sales pipelines, and geographic market performance.',
+                tech: ['Excel', 'Pivot Tables', 'VBA', 'Financial Modeling'],
                 images: [
-                    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
-                    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80'
+                    'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80'
                 ]
             }
         ];
-
-        // Retrieve / Save Local Projects
-        function getProjects() {
-            const saved = localStorage.getItem('kd_portfolio_projects');
-            return saved ? JSON.parse(saved) : defaultProjects;
-        }
-
-        function saveProjects(projects) {
-            localStorage.setItem('kd_portfolio_projects', JSON.stringify(projects));
-            renderProjects();
-        }
 
         // Active Lightbox State
         let currentGallery = [];
         let currentIndex = 0;
         let currentTitle = '';
 
-        // Render Projects Grid
+        // Render Projects Grid (Read-Only)
         function renderProjects(filterCategory = 'all') {
             const grid = document.getElementById('projectsGrid');
-            const projects = getProjects();
             grid.innerHTML = '';
 
-            projects.forEach(p => {
+            publicProjects.forEach(p => {
                 if (filterCategory !== 'all' && p.category !== filterCategory) return;
 
                 const images = p.images && p.images.length > 0 ? p.images : ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'];
@@ -508,7 +422,6 @@
 
                 const cardHtml = `
                     <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
-                        <!-- Main Cover Screenshot -->
                         <div class="relative h-48 bg-slate-200 dark:bg-slate-800 overflow-hidden cursor-pointer group" onclick="openLightboxForProject('${p.id}', 0)">
                             <img src="${images[0]}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-sm font-semibold gap-2">
@@ -518,27 +431,14 @@
                             <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-2 py-1 rounded-md font-medium"><i class="fa-regular fa-image mr-1"></i>${images.length}</span>
                         </div>
 
-                        <!-- Gallery Thumbnails Strip -->
                         <div class="p-3 bg-slate-50 dark:bg-slate-800/40 border-b border-slate-100 dark:border-slate-800 flex gap-2">
                             ${thumbStrip}
                         </div>
 
-                        <!-- Card Details -->
                         <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
                             <div>
                                 <div class="flex items-center justify-between mb-2">
                                     <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-400">${p.tagLabel || p.category}</span>
-                                    
-                                    <!-- EDIT & DELETE BUTTONS -->
-                                    <div class="flex items-center gap-1.5">
-                                        <button onclick="editProject('${p.id}')" class="px-2.5 py-1 text-xs font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 rounded-md transition flex items-center gap-1.5 shadow-sm" title="Edit Project">
-                                            <i class="fa-solid fa-pen text-brand-600 group-hover:text-white"></i>
-                                            <span>Edit</span>
-                                        </button>
-                                        <button onclick="deleteProject('${p.id}')" class="p-1.5 text-xs text-red-500 hover:text-white hover:bg-red-600 rounded-md transition" title="Delete Project">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
-                                    </div>
                                 </div>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white">${p.title}</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">${p.desc}</p>
@@ -566,129 +466,12 @@
             });
         });
 
-        // Open Modal (Add or Edit Mode)
-        function openProjectModal(editId = null) {
-            const form = document.getElementById('projectForm');
-            form.reset();
-            
-            if (editId) {
-                const project = getProjects().find(p => p.id === editId);
-                if (project) {
-                    document.getElementById('modalHeaderTitle').innerText = 'Edit Project';
-                    document.getElementById('editProjectId').value = project.id;
-                    document.getElementById('pTitle').value = project.title;
-                    document.getElementById('pCategory').value = project.category;
-                    document.getElementById('pTagLabel').value = project.tagLabel || '';
-                    document.getElementById('pDesc').value = project.desc;
-                    document.getElementById('pTech').value = project.tech ? project.tech.join(', ') : '';
-                    document.getElementById('pImgUrls').value = project.images ? project.images.join(', ') : '';
-                }
-            } else {
-                document.getElementById('modalHeaderTitle').innerText = 'Add New Project';
-                document.getElementById('editProjectId').value = '';
-            }
-
-            document.getElementById('projectModal').classList.remove('hidden');
-            document.getElementById('projectModal').classList.add('flex');
-        }
-
-        function closeProjectModal() {
-            document.getElementById('projectModal').classList.add('hidden');
-            document.getElementById('projectModal').classList.remove('flex');
-            document.getElementById('projectForm').reset();
-        }
-
-        function editProject(id) {
-            openProjectModal(id);
-        }
-
-        // Save Project (Handles both Create & Update)
-        function handleSaveProject(e) {
-            e.preventDefault();
-            const editId = document.getElementById('editProjectId').value;
-            const title = document.getElementById('pTitle').value;
-            const category = document.getElementById('pCategory').value;
-            const tagLabel = document.getElementById('pTagLabel').value || category;
-            const desc = document.getElementById('pDesc').value;
-            const techStr = document.getElementById('pTech').value;
-            const tech = techStr ? techStr.split(',').map(s => s.trim()) : ['General'];
-            
-            const urlInputs = document.getElementById('pImgUrls').value;
-            const fileInput = document.getElementById('pImgFiles').files;
-
-            let uploadedImages = [];
-
-            if (urlInputs.trim()) {
-                uploadedImages = urlInputs.split(',').map(u => u.trim()).filter(u => u.length > 0);
-            }
-
-            if (fileInput.length > 0) {
-                let loadedCount = 0;
-                for (let i = 0; i < fileInput.length; i++) {
-                    const reader = new FileReader();
-                    reader.onload = function(evt) {
-                        uploadedImages.push(evt.target.result);
-                        loadedCount++;
-                        if (loadedCount === fileInput.length) {
-                            commitProject(uploadedImages);
-                        }
-                    };
-                    reader.readAsDataURL(fileInput[i]);
-                }
-            } else {
-                commitProject(uploadedImages);
-            }
-
-            function commitProject(imgArray) {
-                let projects = getProjects();
-
-                if (editId) {
-                    // Update existing project
-                    projects = projects.map(p => {
-                        if (p.id === editId) {
-                            return {
-                                ...p,
-                                title,
-                                category,
-                                tagLabel,
-                                desc,
-                                tech,
-                                images: imgArray.length > 0 ? imgArray : p.images
-                            };
-                        }
-                        return p;
-                    });
-                } else {
-                    // Create new project
-                    const newProject = {
-                        id: Date.now().toString(),
-                        title,
-                        category,
-                        tagLabel,
-                        desc,
-                        tech,
-                        images: imgArray.length > 0 ? imgArray : ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80']
-                    };
-                    projects.unshift(newProject);
-                }
-
-                saveProjects(projects);
-                closeProjectModal();
-            }
-        }
-
-        // Delete Project
-        function deleteProject(id) {
-            const projects = getProjects().filter(p => p.id !== id);
-            saveProjects(projects);
-        }
-
         // Lightbox Gallery Functions
         function openLightboxForProject(projectId, startIdx = 0) {
-            const project = getProjects().find(p => p.id === projectId);
+            const project = publicProjects.find(p => p.id === projectId);
             if (!project) return;
 
-            currentGallery = project.images && project.images.length > 0 ? project.images : ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'];
+            currentGallery = project.images && project.images.length > 0 ? project.images : [];
             currentIndex = startIdx;
             currentTitle = project.title;
 

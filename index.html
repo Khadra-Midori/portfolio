@@ -51,8 +51,8 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-40 glass border-b border-slate-200/50 dark:border-slate-800/50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <!-- Double click "KD" logo to trigger Secret Admin Mode -->
-            <a href="#" ondblclick="toggleAdminMode()" class="font-bold text-xl tracking-tight text-slate-900 dark:text-white flex items-center gap-2 select-none" title="Double click for Admin Mode">
+            <!-- Clean secure logo -->
+            <a href="#" class="font-bold text-xl tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
                 <span class="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center font-extrabold text-sm shadow-md">KD</span>
                 <span>Khadra DJADJA</span>
             </a>
@@ -66,17 +66,16 @@
                 <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Contact</a>
             </div>
 
-            <!-- Header Social & Controls -->
+            <!-- Header Controls -->
             <div class="flex items-center gap-3">
                 <a href="https://www.linkedin.com/in/khadra-djadja-13aba11b2/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-[#0a66c2] hover:bg-[#084e96] text-white transition shadow-sm flex items-center justify-center text-sm" title="LinkedIn Profile">
                     <i class="fa-brands fa-linkedin-in"></i>
                 </a>
-                <!-- Hidden by default for visitors, shown only when Admin Mode is active -->
                 <button id="adminAddBtn" onclick="openProjectModal()" class="hidden px-3 py-1.5 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition shadow-sm items-center gap-1.5">
                     <i class="fa-solid fa-plus"></i>
                     <span>Add Project</span>
                 </button>
-                <button id="themeToggle" class="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <button id="themeToggle" class="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle Dark/Light Mode">
                     <i class="fa-solid fa-moon dark:hidden"></i>
                     <i class="fa-solid fa-sun hidden dark:block"></i>
                 </button>
@@ -316,7 +315,7 @@
         </div>
     </footer>
 
-    <!-- ADD/EDIT PROJECT MODAL (ADMIN ONLY) -->
+    <!-- ADD/EDIT PROJECT MODAL -->
     <div id="projectModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
         <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-xl w-full p-6 shadow-2xl relative space-y-5 my-8">
             <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
@@ -359,7 +358,7 @@
                     <input type="text" id="pTech" placeholder="Power BI, SQL, Python, Excel" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
                 </div>
 
-                <!-- Screenshots Input with Multi-File & Preview Management -->
+                <!-- Screenshots Input -->
                 <div class="space-y-3 border-t border-slate-100 dark:border-slate-800 pt-3">
                     <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Project Screenshots (Multiple Supported)</label>
                     <div>
@@ -409,22 +408,29 @@
 
     <!-- JavaScript Logic -->
     <script>
-        // Dark Mode Toggle
-        const themeToggleBtn = document.getElementById('themeToggle');
+        // Initialize Dark Mode
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
 
-        themeToggleBtn.addEventListener('click', () => {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.theme = 'dark';
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleBtn = document.getElementById('themeToggle');
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    if (document.documentElement.classList.contains('dark')) {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.theme = 'light';
+                    } else {
+                        document.documentElement.classList.add('dark');
+                        localStorage.theme = 'dark';
+                    }
+                });
             }
+
+            updateAdminVisibility();
+            renderProjects();
         });
 
         // Default Base Projects
@@ -479,34 +485,21 @@
             renderProjects();
         }
 
-        // Secret Admin Mode Toggle
+        // Admin Mode State (Enabled automatically on your browser device)
         let isAdmin = localStorage.getItem('kd_admin_mode') === 'true';
-
-        function toggleAdminMode() {
-            isAdmin = !isAdmin;
-            localStorage.setItem('kd_admin_mode', isAdmin);
-            updateAdminVisibility();
-            renderProjects();
-            alert(isAdmin ? "🔒 Admin Mode Activated: You can now edit/add projects!" : "👀 Visitor Mode Activated: Read-only view enabled.");
-        }
 
         function updateAdminVisibility() {
             const btn = document.getElementById('adminAddBtn');
-            if (isAdmin) {
-                btn.classList.remove('hidden');
-                btn.classList.add('flex');
-            } else {
-                btn.classList.add('hidden');
-                btn.classList.remove('flex');
+            if (btn) {
+                if (isAdmin) {
+                    btn.classList.remove('hidden');
+                    btn.classList.add('flex');
+                } else {
+                    btn.classList.add('hidden');
+                    btn.classList.remove('flex');
+                }
             }
         }
-
-        // Keyboard Shortcut: Ctrl + Shift + E triggers Admin Mode
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'e') {
-                toggleAdminMode();
-            }
-        });
 
         // Active Lightbox State
         let currentGallery = [];
@@ -517,6 +510,7 @@
         // Render Projects Grid
         function renderProjects(filterCategory = 'all') {
             const grid = document.getElementById('projectsGrid');
+            if (!grid) return;
             const projects = getProjects();
             grid.innerHTML = '';
 
@@ -532,7 +526,6 @@
                     </div>
                 `).join('');
 
-                // Render Edit & Delete buttons ONLY if Admin Mode is active
                 const adminControlsHtml = isAdmin ? `
                     <div class="flex items-center gap-1">
                         <button onclick="editProject('${p.id}')" class="text-xs text-slate-500 hover:text-brand-600 p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800" title="Edit Project"><i class="fa-solid fa-pen"></i></button>
@@ -590,7 +583,7 @@
         // Open Modal (Add or Edit)
         function openProjectModal(editId = null) {
             const form = document.getElementById('projectForm');
-            form.reset();
+            if (form) form.reset();
             modalFormImages = [];
             
             if (editId) {
@@ -618,7 +611,8 @@
         function closeProjectModal() {
             document.getElementById('projectModal').classList.add('hidden');
             document.getElementById('projectModal').classList.remove('flex');
-            document.getElementById('projectForm').reset();
+            const form = document.getElementById('projectForm');
+            if (form) form.reset();
             modalFormImages = [];
         }
 
@@ -648,6 +642,7 @@
 
         function renderModalPreviews() {
             const container = document.getElementById('activeUploadPreviews');
+            if (!container) return;
             container.innerHTML = modalFormImages.map((img, idx) => `
                 <div class="relative w-16 h-16 rounded-lg overflow-hidden border border-slate-300 dark:border-slate-700 group">
                     <img src="${img}" class="w-full h-full object-cover">
@@ -761,20 +756,14 @@
             document.getElementById('lightboxModal').classList.remove('flex');
         }
 
-        // Keyboard Navigation
+        // Keyboard Navigation for Lightbox & Escape
         document.addEventListener('keydown', (e) => {
             const modal = document.getElementById('lightboxModal');
-            if (!modal.classList.contains('hidden')) {
+            if (modal && !modal.classList.contains('hidden')) {
                 if (e.key === 'ArrowRight') nextImage();
                 if (e.key === 'ArrowLeft') prevImage();
                 if (e.key === 'Escape') closeLightbox();
             }
-        });
-
-        // Initialize on Load
-        document.addEventListener('DOMContentLoaded', () => {
-            updateAdminVisibility();
-            renderProjects();
         });
     </script>
 </body>

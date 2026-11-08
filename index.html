@@ -1,769 +1,216 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khadra DJADJA — Portfolio & Engineering Projects</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            700: '#0f766e',
-                            800: '#115e59',
-                            900: '#134e4a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .dark .glass {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2d">
+  <meta name="description" content="Khadra Djadja — Business Intelligence and Operational Performance Analyst. Power BI, DAX, Excel reporting, production analysis and process improvement.">
+  <meta property="og:title" content="Khadra Djadja | BI & Operational Performance">
+  <meta property="og:description" content="Turning operational data into clear decisions through BI, reporting and process analysis.">
+  <title>Khadra Djadja | BI & Operational Performance Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#142238;--muted:#607086;--paper:#f7f8fa;--white:#fff;--line:#e4e9ef;--teal:#087f82;--teal-dark:#066568;--teal-pale:#e5f4f2;--navy:#101b2d;--gold:#d5a85b;--shadow:0 18px 50px rgba(20,34,56,.08);--radius:18px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:86px}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(1120px,calc(100% - 44px));margin:auto}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--teal);font-size:.76rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}.eyebrow:before{content:"";width:23px;height:2px;background:var(--gold)}h1,h2,h3,h4{font-family:Manrope,sans-serif;line-height:1.2;letter-spacing:-.035em}h1{font-size:clamp(2.7rem,6vw,5.25rem);margin:22px 0 20px;font-weight:800;max-width:790px}h2{font-size:clamp(2rem,4vw,3rem);margin:13px 0 14px}h3{font-size:1.24rem;margin:0 0 10px}p{margin:0 0 14px}.muted{color:var(--muted)}.topbar{height:76px;position:sticky;top:0;z-index:20;background:rgba(247,248,250,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(228,233,239,.85)}.nav{height:100%;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:11px;font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.03em}.brand-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--navy);color:#fff;font-size:.78rem;letter-spacing:0}.navlinks{display:flex;align-items:center;gap:27px;font-size:.88rem;font-weight:600;color:#516176}.navlinks a:hover,.text-link:hover{color:var(--teal)}.nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 18px;border-radius:10px;background:var(--teal);color:#fff;font-weight:700;font-size:.9rem;transition:.2s;border:1px solid var(--teal)}.nav-cta:hover,.button:hover{background:var(--teal-dark);transform:translateY(-1px)}.menu-btn{display:none;border:1px solid var(--line);background:#fff;border-radius:9px;padding:8px 11px;color:var(--ink)}
+    .hero{padding:94px 0 90px;background:radial-gradient(circle at 88% 12%,rgba(8,127,130,.10),transparent 28%),linear-gradient(180deg,#fbfcfd 0%,var(--paper) 100%)}.hero-grid{display:grid;grid-template-columns:1.45fr .75fr;gap:60px;align-items:center}.hero-copy{max-width:760px}.hero h1 span{color:var(--teal)}.hero-lede{font-size:1.17rem;line-height:1.8;color:#53647a;max-width:680px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.button.secondary{background:transparent;color:var(--ink);border-color:#cfd8e2}.button.secondary:hover{background:#fff;border-color:#aab8c8}.profile-panel{background:var(--navy);color:#fff;border-radius:22px;padding:27px;box-shadow:var(--shadow);position:relative;overflow:hidden}.profile-panel:after{content:"";position:absolute;width:190px;height:190px;border:1px solid rgba(255,255,255,.11);border-radius:50%;right:-72px;top:-75px;box-shadow:0 0 0 22px rgba(255,255,255,.025),0 0 0 48px rgba(255,255,255,.02)}.profile-kicker{font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;color:#9eb4c9;font-weight:700}.profile-title{font:800 1.45rem Manrope,sans-serif;margin:13px 0 6px}.profile-location{color:#b7c5d4;font-size:.9rem}.profile-rule{height:1px;background:rgba(255,255,255,.14);margin:22px 0}.focus-list{display:grid;gap:13px}.focus-row{display:flex;justify-content:space-between;gap:14px;font-size:.86rem}.focus-row span:first-child{color:#9eb0c2}.focus-row strong{text-align:right;font-weight:600;color:#f3f7fa}.availability{display:inline-flex;align-items:center;gap:8px;margin-top:22px;color:#c7e9df;font-size:.8rem}.availability i{width:7px;height:7px;border-radius:50%;background:#61c59d;box-shadow:0 0 0 4px rgba(97,197,157,.14)}
+    .proof-strip{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:22px 0}.proof-item{padding:5px 22px;border-right:1px solid var(--line)}.proof-item:first-child{padding-left:0}.proof-item:last-child{border:0}.proof-item strong{display:block;font:800 1.12rem Manrope,sans-serif}.proof-item span{color:var(--muted);font-size:.79rem}
+    section.content{padding:92px 0}.section-head{max-width:720px;margin-bottom:38px}.section-head p{color:var(--muted);font-size:1.02rem}.projects{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.project-card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:0 7px 25px rgba(20,34,56,.035);display:flex;flex-direction:column;min-width:0}.project-card.featured{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr}.project-visual{background:#edf2f5;min-height:210px;position:relative;overflow:hidden}.project-card.featured .project-visual{min-height:100%}.project-visual img{width:100%;height:100%;min-height:210px;object-fit:cover;display:block;transition:transform .5s}.project-card:hover .project-visual img{transform:scale(1.025)}.project-visual .visual-label{position:absolute;left:17px;top:17px;background:rgba(16,27,45,.88);color:#fff;padding:6px 10px;border-radius:7px;font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;font-weight:700}.project-body{padding:27px;display:flex;flex-direction:column;align-items:flex-start}.project-body p{color:var(--muted);font-size:.94rem}.project-meta{font-size:.74rem;color:var(--teal);font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px}.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.tag{background:#f0f4f6;color:#526477;border-radius:6px;padding:5px 9px;font-size:.72rem;font-weight:600}.project-note{margin-top:15px;padding:12px 14px;border-left:2px solid var(--gold);background:#fbf8f1;color:#6d624f;font-size:.81rem}
+    .capabilities{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.cap-card{padding:25px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}.cap-icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--teal-pale);color:var(--teal);font-weight:800;margin-bottom:19px}.cap-card p{font-size:.9rem;color:var(--muted);margin-bottom:0}.skill-cloud{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}.skill{padding:9px 13px;border:1px solid #dce4ea;background:#fff;border-radius:8px;font-size:.82rem;font-weight:600;color:#405269}
+    .experience{background:var(--navy);color:#fff}.experience .eyebrow{color:#8fd0c6}.experience .section-head p{color:#afbdcb}.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.timeline-card{border:1px solid rgba(255,255,255,.14);border-radius:15px;padding:23px;background:rgba(255,255,255,.035)}.timeline-card .date{color:#8fd0c6;font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700}.timeline-card h3{margin:12px 0 6px}.timeline-card .org{color:#b9c8d6;font-size:.88rem;margin-bottom:13px}.timeline-card p{font-size:.86rem;color:#c3ced9;margin:0}
+    .credentials{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}.credential-list{display:grid;gap:11px}.credential{padding:15px 17px;border:1px solid var(--line);border-radius:11px;background:#fff}.credential strong{display:block;font-size:.91rem}.credential span{display:block;color:var(--muted);font-size:.79rem;margin-top:3px}.languages{display:grid;gap:13px;margin-top:22px}.language{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px;font-size:.9rem}.language span{color:var(--muted)}
+    .contact{background:#eaf2f2}.contact-box{display:flex;justify-content:space-between;align-items:center;gap:30px;background:#fff;padding:36px;border-radius:20px;border:1px solid #dce8e7;box-shadow:var(--shadow)}.contact-box h2{font-size:2rem}.contact-box p{color:var(--muted);max-width:560px;margin:0}.contact-actions{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}.footer{padding:25px 0;color:#718096;font-size:.8rem}.footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.text-link{font-weight:700;color:var(--teal)}
+    @media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:35px}.profile-panel{max-width:520px}.proof-grid{grid-template-columns:repeat(2,1fr);row-gap:16px}.proof-item:nth-child(2){border:0}.project-card.featured{grid-template-columns:1fr}.project-card.featured .project-visual{min-height:230px}.capabilities{grid-template-columns:1fr 1fr}.timeline{grid-template-columns:1fr}.contact-box{align-items:flex-start;flex-direction:column}.navlinks{gap:15px}}
+    @media(max-width:620px){.wrap{width:min(100% - 32px,1120px)}.topbar{height:68px}.menu-btn{display:block}.nav-cta{display:none}.navlinks{display:none;position:absolute;top:67px;left:0;right:0;background:#fbfcfd;border-bottom:1px solid var(--line);padding:18px 22px 22px;flex-direction:column;align-items:flex-start;gap:17px}.navlinks.open{display:flex}.hero{padding:67px 0 62px}h1{font-size:2.75rem}.hero-lede{font-size:1.02rem}.proof-item{padding:5px 12px}.proof-item:first-child{padding-left:0}.proof-grid{padding:17px 0}.proof-item strong{font-size:1rem}.proof-item span{font-size:.72rem}section.content{padding:68px 0}.project-grid,.capabilities,.credentials{grid-template-columns:1fr}.project-card.featured{grid-column:auto}.project-body{padding:22px}.contact-box{padding:25px}.contact-box h2{font-size:1.7rem}.footer-inner{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen transition-colors duration-300">
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-40 glass border-b border-slate-200/50 dark:border-slate-800/50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <!-- Clean secure logo -->
-            <a href="#" class="font-bold text-xl tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center font-extrabold text-sm shadow-md">KD</span>
-                <span>Khadra DJADJA</span>
-            </a>
-
-            <!-- Desktop Nav -->
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#about" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">About</a>
-                <a href="#projects" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Projects</a>
-                <a href="#skills" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Skills</a>
-                <a href="#certifications" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Certifications</a>
-                <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Contact</a>
-            </div>
-
-            <!-- Header Controls -->
-            <div class="flex items-center gap-3">
-                <a href="https://www.linkedin.com/in/khadra-djadja-13aba11b2/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-[#0a66c2] hover:bg-[#084e96] text-white transition shadow-sm flex items-center justify-center text-sm" title="LinkedIn Profile">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <button id="adminAddBtn" onclick="openProjectModal()" class="hidden px-3 py-1.5 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition shadow-sm items-center gap-1.5">
-                    <i class="fa-solid fa-plus"></i>
-                    <span>Add Project</span>
-                </button>
-                <button id="themeToggle" class="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle Dark/Light Mode">
-                    <i class="fa-solid fa-moon dark:hidden"></i>
-                    <i class="fa-solid fa-sun hidden dark:block"></i>
-                </button>
-            </div>
-        </div>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Khadra Djadja home"><span class="brand-mark">KD</span><span>Khadra Djadja</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      <div class="navlinks" id="navLinks">
+        <a href="#work">Selected work</a><a href="#expertise">Expertise</a><a href="#experience">Experience</a><a href="#credentials">Credentials</a>
+      </div>
+      <a class="nav-cta" href="#contact">Discuss a project <span aria-hidden="true">↗</span></a>
     </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section id="about" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-7 space-y-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
-                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-                    Available for Remote & Technical Roles
-                </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-                    Data Analytics, Ad Operations & Engineering
-                </h1>
-                <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl">
-                    Specialist in digital advertising inventory auditing, Power BI & Looker Studio reporting dashboards, automated workflows, and engineering system modeling.
-                </p>
-                <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="#projects" class="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-medium rounded-xl shadow-lg shadow-brand-600/20 transition flex items-center gap-2">
-                        <span>View Portfolio Projects</span>
-                        <i class="fa-solid fa-arrow-down text-xs"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/khadra-djadja-13aba11b2/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-[#0a66c2] hover:bg-[#084e96] text-white font-medium rounded-xl shadow-lg shadow-[#0a66c2]/20 transition flex items-center gap-2">
-                        <i class="fa-brands fa-linkedin"></i>
-                        <span>Connect on LinkedIn</span>
-                    </a>
-                </div>
-            </div>
-            <div class="lg:col-span-5">
-                <div class="relative mx-auto max-w-md p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 space-y-6">
-                    <div class="flex items-center gap-4">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-600 to-teal-400 text-white flex items-center justify-center font-bold text-2xl shadow-md">
-                            KD
-                        </div>
-                        <div>
-                            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Khadra DJADJA</h2>
-                            <p class="text-sm text-slate-500 dark:text-slate-400">Algiers, Algeria</p>
-                        </div>
-                    </div>
-                    <div class="space-y-3 pt-2 text-sm">
-                        <div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-800">
-                            <span class="text-slate-500 dark:text-slate-400">Core Focus</span>
-                            <span class="font-medium text-slate-800 dark:text-slate-200">Data, Systems & Operations</span>
-                        </div>
-                        <div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-800">
-                            <span class="text-slate-500 dark:text-slate-400">Certifications</span>
-                            <span class="font-medium text-slate-800 dark:text-slate-200">ISO 27001, Six Sigma, DOOH</span>
-                        </div>
-                        <div class="flex justify-between items-center py-2">
-                            <span class="text-slate-500 dark:text-slate-400">Languages</span>
-                            <span class="font-medium text-slate-800 dark:text-slate-200">English, Arabic, French</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Business intelligence · Operations · Process improvement</div>
+          <h1>I turn operational data into <span>clear decisions.</span></h1>
+          <p class="hero-lede">I'm Khadra, a BI and Operational Performance Analyst working across reporting, production analysis and process improvement. I build practical reporting systems that help teams understand performance, spot issues and act with confidence.</p>
+          <div class="hero-actions">
+            <a class="button" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
+            <a class="button secondary" href="https://www.linkedin.com/in/khadra-djadja-13aba11b2/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a>
+          </div>
         </div>
+        <aside class="profile-panel" aria-label="Professional summary">
+          <div class="profile-kicker">Professional snapshot</div>
+          <div class="profile-title">Khadra Djadja</div>
+          <div class="profile-location">Algiers, Algeria · Open to remote & project-based work</div>
+          <div class="profile-rule"></div>
+          <div class="focus-list">
+            <div class="focus-row"><span>Primary focus</span><strong>BI & operational reporting</strong></div>
+            <div class="focus-row"><span>Core tools</span><strong>Power BI · DAX · Excel</strong></div>
+            <div class="focus-row"><span>Domain experience</span><strong>Ad operations · Manufacturing</strong></div>
+            <div class="focus-row"><span>Foundation</span><strong>Hydraulic engineering</strong></div>
+          </div>
+          <div class="availability"><i></i> Available for selected opportunities</div>
+        </aside>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-slate-100/70 dark:bg-slate-900/40 border-y border-slate-200/60 dark:border-slate-800/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-                <div>
-                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Featured Projects & Screenshots</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mt-2">Click any screenshot to expand image galleries in full resolution.</p>
-                </div>
-                <!-- Category Filters -->
-                <div class="flex flex-wrap gap-1.5" id="filterContainer">
-                    <button data-filter="all" class="filter-btn px-3 py-2 text-xs font-medium rounded-lg bg-brand-600 text-white shadow-sm">All</button>
-                    <button data-filter="analytics" class="filter-btn px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50">Analytics</button>
-                    <button data-filter="operations" class="filter-btn px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50">Ad Ops</button>
-                    <button data-filter="engineering" class="filter-btn px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50">Engineering</button>
-                </div>
-            </div>
-
-            <!-- Dynamic Projects Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
-                <!-- Populated via JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-12">Skills & Expertise</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
-                <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold text-xl">
-                    <i class="fa-solid fa-chart-pie"></i>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Data Analytics & BI</h3>
-                <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm">
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Power BI Dashboard Design</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Looker Studio Custom Reporting</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Advanced Excel, VBA & Macros</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Python Data Processing</li>
-                </ul>
-            </div>
-
-            <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
-                <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold text-xl">
-                    <i class="fa-solid fa-bullseye"></i>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Ad Operations</h3>
-                <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm">
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Digital Ad Inventory Auditing</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Vistar Media DOOH Management</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Campaign Performance Tracking</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Asana Workflow Automation</li>
-                </ul>
-            </div>
-
-            <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
-                <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold text-xl">
-                    <i class="fa-solid fa-gears"></i>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Engineering & Quality</h3>
-                <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm">
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> ISO/IEC 27001 Lead Auditor</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Lean Six Sigma Process Control</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Epanet & MapInfo GIS</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> SAP B1 Maintenance (GMAO)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="py-20 bg-slate-100/70 dark:bg-slate-900/40 border-y border-slate-200/60 dark:border-slate-800/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-12">Certifications & Credentials</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="p-5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                    <span class="text-xs font-semibold text-brand-600 dark:text-brand-400">Mastermind</span>
-                    <h4 class="font-bold text-slate-900 dark:text-white text-base">ISO/IEC 27001 Lead Auditor</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Information Security Management Systems</p>
-                </div>
-                <div class="p-5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                    <span class="text-xs font-semibold text-brand-600 dark:text-brand-400">Vistar Media</span>
-                    <h4 class="font-bold text-slate-900 dark:text-white text-base">Foundations of DOOH</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Digital Out-Of-Home Ad Operations</p>
-                </div>
-                <div class="p-5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                    <span class="text-xs font-semibold text-brand-600 dark:text-brand-400">Lean Six Sigma</span>
-                    <h4 class="font-bold text-slate-900 dark:text-white text-base">White Belt Certification</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Process Improvement & Quality Control</p>
-                </div>
-                <div class="p-5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                    <span class="text-xs font-semibold text-brand-600 dark:text-brand-400">Asana</span>
-                    <h4 class="font-bold text-slate-900 dark:text-white text-base">CWM Workflow Specialist</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Collaborative Work Management</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div class="lg:col-span-5 space-y-6">
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Let's Connect</h2>
-                <p class="text-slate-600 dark:text-slate-300">
-                    Reach out directly for remote ad ops roles, data analytics consultation, hydraulic engineering projects, or technical inquiries.
-                </p>
-                <div class="space-y-4 text-sm">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div>
-                            <p class="font-medium text-slate-900 dark:text-white">Location</p>
-                            <p class="text-slate-500 dark:text-slate-400">Algiers, Algeria</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-clock"></i>
-                        </div>
-                        <div>
-                            <p class="font-medium text-slate-900 dark:text-white">Availability</p>
-                            <p class="text-slate-500 dark:text-slate-400">Full-time / Remote Technical Roles</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Form with Web3Forms -->
-            <div class="lg:col-span-7 bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
-                    <input type="hidden" name="apikey" value="e0c84252-fd98-466e-bdda-0f2b90ec3502">
-                    <input type="hidden" name="subject" value="New Message from Portfolio Website">
-                    <input type="hidden" name="from_name" value="Khadra's Portfolio Website">
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Your Name</label>
-                            <input type="text" name="name" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none transition">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Your Email</label>
-                            <input type="email" name="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none transition">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Subject</label>
-                        <input type="text" name="message_subject" placeholder="Project Inquiry / Role Opportunity" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none transition">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Message</label>
-                        <textarea name="message" rows="5" required placeholder="Write your message here..." class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none transition"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full py-3.5 px-6 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition shadow-md shadow-brand-600/20 flex items-center justify-center gap-2">
-                        <span>Send Message</span>
-                        <i class="fa-solid fa-paper-plane text-sm"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-sm text-slate-500 dark:text-slate-400">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© Khadra DJADJA. All rights reserved.</p>
-            <div class="flex items-center gap-4">
-                <a href="https://www.linkedin.com/in/khadra-djadja-13aba11b2/" target="_blank" rel="noopener noreferrer" class="text-xs text-[#0a66c2] hover:underline font-semibold flex items-center gap-1">
-                    <i class="fa-brands fa-linkedin"></i> LinkedIn
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ADD/EDIT PROJECT MODAL -->
-    <div id="projectModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-xl w-full p-6 shadow-2xl relative space-y-5 my-8">
-            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
-                <h3 id="modalHeaderTitle" class="text-xl font-bold text-slate-900 dark:text-white">Add New Project</h3>
-                <button onclick="closeProjectModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white text-lg p-1">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <form id="projectForm" onsubmit="handleSaveProject(event)" class="space-y-4">
-                <input type="hidden" id="editProjectId" value="">
-
-                <div>
-                    <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Project Title</label>
-                    <input type="text" id="pTitle" required placeholder="e.g. Sales Analytics Dashboard" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Category</label>
-                        <select id="pCategory" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
-                            <option value="analytics">Analytics & Data</option>
-                            <option value="operations">Ad Operations</option>
-                            <option value="engineering">Engineering</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Tag Label</label>
-                        <input type="text" id="pTagLabel" placeholder="e.g. Looker Studio" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Project Description</label>
-                    <textarea id="pDesc" rows="3" required placeholder="Describe project features, metrics, and achievements..." class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none"></textarea>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Technologies (comma-separated)</label>
-                    <input type="text" id="pTech" placeholder="Power BI, SQL, Python, Excel" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
-                </div>
-
-                <!-- Screenshots Input -->
-                <div class="space-y-3 border-t border-slate-100 dark:border-slate-800 pt-3">
-                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Project Screenshots (Multiple Supported)</label>
-                    <div>
-                        <input type="text" id="pImgUrls" placeholder="Paste Image URLs separated by commas" class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
-                    </div>
-                    <div class="text-xs text-slate-400 text-center">or select multiple local image files</div>
-                    <div>
-                        <input type="file" id="pImgFiles" accept="image/*" multiple onchange="handleFileSelect(event)" class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 dark:file:bg-brand-950 dark:file:text-brand-400">
-                    </div>
-                    <div id="activeUploadPreviews" class="flex flex-wrap gap-2 pt-2"></div>
-                </div>
-
-                <div class="flex justify-end gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
-                    <button type="button" onclick="closeProjectModal()" class="px-4 py-2 text-xs font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">Cancel</button>
-                    <button type="submit" class="px-5 py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition shadow-sm">Save Changes</button>
-                </div>
-            </form>
-        </div>
+    <div class="proof-strip">
+      <div class="wrap proof-grid">
+        <div class="proof-item"><strong>3,000+</strong><span>OOH advertising placements supported in operations</span></div>
+        <div class="proof-item"><strong>Power BI + DAX</strong><span>Dashboards, measures and KPI reporting</span></div>
+        <div class="proof-item"><strong>Engineering</strong><span>Analytical and systems-thinking foundation</span></div>
+        <div class="proof-item"><strong>Cross-functional</strong><span>Operations, data and training experience</span></div>
+      </div>
     </div>
 
-    <!-- LIGHTBOX GALLERY MODAL -->
-    <div id="lightboxModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex-col items-center justify-between p-4 sm:p-8">
-        <div class="w-full flex items-center justify-between max-w-6xl text-white">
-            <div>
-                <h4 id="lbTitle" class="font-bold text-lg">Project Screenshots</h4>
-                <span id="lbCounter" class="text-xs text-slate-400">Image 1 of 1</span>
-            </div>
-            <button onclick="closeLightbox()" class="text-2xl text-slate-400 hover:text-white p-2">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+    <section class="content projects" id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Selected work</div>
+          <h2>Analysis grounded in real operations.</h2>
+          <p>A selection of operational and analytical work. Client-sensitive information is intentionally excluded; examples focus on the problem, approach and tools.</p>
         </div>
-
-        <div class="relative max-w-5xl w-full flex-1 flex items-center justify-center my-4 group">
-            <button onclick="prevImage()" class="absolute left-2 z-10 w-12 h-12 rounded-full bg-slate-900/60 hover:bg-slate-800 text-white flex items-center justify-center text-xl transition">
-                <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            
-            <img id="lbImage" src="" alt="Screenshot" class="max-h-[75vh] max-w-full object-contain rounded-lg shadow-2xl transition-all duration-300">
-
-            <button onclick="nextImage()" class="absolute right-2 z-10 w-12 h-12 rounded-full bg-slate-900/60 hover:bg-slate-800 text-white flex items-center justify-center text-xl transition">
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
-        </div>
-
-        <div id="lbThumbnails" class="flex gap-2 max-w-2xl overflow-x-auto p-2"></div>
-    </div>
-
-    <!-- JavaScript Logic -->
-    <script>
-        // Initialize Dark Mode
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggleBtn = document.getElementById('themeToggle');
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', () => {
-                    if (document.documentElement.classList.contains('dark')) {
-                        document.documentElement.classList.remove('dark');
-                        localStorage.theme = 'light';
-                    } else {
-                        document.documentElement.classList.add('dark');
-                        localStorage.theme = 'dark';
-                    }
-                });
-            }
-
-            updateAdminVisibility();
-            renderProjects();
-        });
-
-        // Default Base Projects
-        const baseProjects = [
-            {
-                id: '1',
-                title: 'ISO 22000 & PRP Quality Assurance & Compliance Dashboard',
-                category: 'analytics',
-                tagLabel: 'Excel',
-                desc: 'An advanced, multi-sheet Excel-based quality management and auditing dashboard designed to monitor compliance with ISO 22000 Food Safety Standards.',
-                tech: ['Advanced Excel', 'VBA', 'Data Analysis', 'ISO Standards'],
-                images: [
-                    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-                    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'
-                ]
-            },
-            {
-                id: '2',
-                title: 'Spotify Music Analytics & Insights Dashboard',
-                category: 'analytics',
-                tagLabel: 'Power BI',
-                desc: 'An end-to-end interactive Power BI business intelligence solution designed to uncover streaming trends, track artist performance metrics, and analyze catalog distribution patterns.',
-                tech: ['Power BI', 'DAX', 'Data Visualization', 'SQL'],
-                images: [
-                    'https://images.unsplash.com/photo-1614680376593-902f749f7b2c?auto=format&fit=crop&w=800&q=80'
-                ]
-            },
-            {
-                id: '3',
-                title: 'Business_Analytics_Dashboard',
-                category: 'analytics',
-                tagLabel: 'Excel',
-                desc: 'Executive Financial & Operations Reporting System - Overview: Developed an interactive, multi-sheet business intelligence workbook in Excel to track global revenue streams, multi-channel sales pipelines, and geographic market performance.',
-                tech: ['Excel', 'Pivot Tables', 'VBA', 'Financial Modeling'],
-                images: [
-                    'https://github.com/Khadra-Midori/portfolio/blob/main/Sales%20Proces.png?raw=true',
-                    'https://github.com/Khadra-Midori/portfolio/blob/main/Geographically.png?raw=true',
-                    'https://github.com/Khadra-Midori/portfolio/blob/main/Sales%20Proces.png?raw=true'
-                ]
-            }
-        ];
-
-        // Retrieve / Save Local Projects
-        function getProjects() {
-            const saved = localStorage.getItem('kd_portfolio_projects');
-            return saved ? JSON.parse(saved) : baseProjects;
-        }
-
-        function saveProjects(projects) {
-            localStorage.setItem('kd_portfolio_projects', JSON.stringify(projects));
-            renderProjects();
-        }
-
-        // Admin Mode State (Enabled automatically on your browser device)
-        let isAdmin = localStorage.getItem('kd_admin_mode') === 'true';
-
-        function updateAdminVisibility() {
-            const btn = document.getElementById('adminAddBtn');
-            if (btn) {
-                if (isAdmin) {
-                    btn.classList.remove('hidden');
-                    btn.classList.add('flex');
-                } else {
-                    btn.classList.add('hidden');
-                    btn.classList.remove('flex');
-                }
-            }
-        }
-
-        // Active Lightbox State
-        let currentGallery = [];
-        let currentIndex = 0;
-        let currentTitle = '';
-        let modalFormImages = [];
-
-        // Render Projects Grid
-        function renderProjects(filterCategory = 'all') {
-            const grid = document.getElementById('projectsGrid');
-            if (!grid) return;
-            const projects = getProjects();
-            grid.innerHTML = '';
-
-            projects.forEach(p => {
-                if (filterCategory !== 'all' && p.category !== filterCategory) return;
-
-                const images = p.images && p.images.length > 0 ? p.images : ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'];
-                const techBadges = p.tech.map(t => `<span class="px-2.5 py-1 rounded-md text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium">${t}</span>`).join(' ');
-
-                const thumbStrip = images.map((img, i) => `
-                    <div class="h-12 flex-1 rounded-lg overflow-hidden border ${i === 0 ? 'border-brand-500' : 'border-transparent'} opacity-80 hover:opacity-100 transition cursor-pointer" onclick="openLightboxForProject('${p.id}', ${i})">
-                        <img src="${img}" class="w-full h-full object-cover">
-                    </div>
-                `).join('');
-
-                const adminControlsHtml = isAdmin ? `
-                    <div class="flex items-center gap-1">
-                        <button onclick="editProject('${p.id}')" class="text-xs text-slate-500 hover:text-brand-600 p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800" title="Edit Project"><i class="fa-solid fa-pen"></i></button>
-                        <button onclick="deleteProject('${p.id}')" class="text-xs text-red-500 hover:text-red-700 p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800" title="Delete Project"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                ` : '';
-
-                const cardHtml = `
-                    <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
-                        <div class="relative h-48 bg-slate-200 dark:bg-slate-800 overflow-hidden cursor-pointer group" onclick="openLightboxForProject('${p.id}', 0)">
-                            <img src="${images[0]}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-sm font-semibold gap-2">
-                                <i class="fa-solid fa-images"></i>
-                                <span>View ${images.length} Screenshot${images.length > 1 ? 's' : ''}</span>
-                            </div>
-                            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-2 py-1 rounded-md font-medium"><i class="fa-regular fa-image mr-1"></i>${images.length}</span>
-                        </div>
-
-                        <div class="p-3 bg-slate-50 dark:bg-slate-800/40 border-b border-slate-100 dark:border-slate-800 flex gap-2">
-                            ${thumbStrip}
-                        </div>
-
-                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                            <div>
-                                <div class="flex items-center justify-between mb-2">
-                                    <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-400">${p.tagLabel || p.category}</span>
-                                    ${adminControlsHtml}
-                                </div>
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">${p.title}</h3>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">${p.desc}</p>
-                            </div>
-                            <div class="flex flex-wrap gap-2 pt-2">${techBadges}</div>
-                        </div>
-                    </div>
-                `;
-                grid.innerHTML += cardHtml;
-            });
-        }
-
-        // Category Filter Buttons
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => {
-                    b.classList.remove('bg-brand-600', 'text-white');
-                    b.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
-                });
-                btn.classList.add('bg-brand-600', 'text-white');
-                btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
-
-                renderProjects(btn.getAttribute('data-filter'));
-            });
-        });
-
-        // Open Modal (Add or Edit)
-        function openProjectModal(editId = null) {
-            const form = document.getElementById('projectForm');
-            if (form) form.reset();
-            modalFormImages = [];
-            
-            if (editId) {
-                const project = getProjects().find(p => p.id === editId);
-                if (project) {
-                    document.getElementById('modalHeaderTitle').innerText = 'Edit Project';
-                    document.getElementById('editProjectId').value = project.id;
-                    document.getElementById('pTitle').value = project.title;
-                    document.getElementById('pCategory').value = project.category;
-                    document.getElementById('pTagLabel').value = project.tagLabel || '';
-                    document.getElementById('pDesc').value = project.desc;
-                    document.getElementById('pTech').value = project.tech ? project.tech.join(', ') : '';
-                    modalFormImages = project.images ? [...project.images] : [];
-                }
-            } else {
-                document.getElementById('modalHeaderTitle').innerText = 'Add New Project';
-                document.getElementById('editProjectId').value = '';
-            }
-
-            renderModalPreviews();
-            document.getElementById('projectModal').classList.remove('hidden');
-            document.getElementById('projectModal').classList.add('flex');
-        }
-
-        function closeProjectModal() {
-            document.getElementById('projectModal').classList.add('hidden');
-            document.getElementById('projectModal').classList.remove('flex');
-            const form = document.getElementById('projectForm');
-            if (form) form.reset();
-            modalFormImages = [];
-        }
-
-        function editProject(id) {
-            openProjectModal(id);
-        }
-
-        // Handle File Select (Multiple)
-        function handleFileSelect(event) {
-            const files = event.target.files;
-            if (!files) return;
-
-            for (let i = 0; i < files.length; i++) {
-                const reader = new FileReader();
-                reader.onload = function(evt) {
-                    modalFormImages.push(evt.target.result);
-                    renderModalPreviews();
-                };
-                reader.readAsDataURL(files[i]);
-            }
-        }
-
-        function removeModalImage(index) {
-            modalFormImages.splice(index, 1);
-            renderModalPreviews();
-        }
-
-        function renderModalPreviews() {
-            const container = document.getElementById('activeUploadPreviews');
-            if (!container) return;
-            container.innerHTML = modalFormImages.map((img, idx) => `
-                <div class="relative w-16 h-16 rounded-lg overflow-hidden border border-slate-300 dark:border-slate-700 group">
-                    <img src="${img}" class="w-full h-full object-cover">
-                    <button type="button" onclick="removeModalImage(${idx})" class="absolute top-0 right-0 bg-red-600 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-bl hover:bg-red-700">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
+        <div class="project-grid">
+          <article class="project-card featured">
+            <div class="project-visual">
+              <div class="visual-label">Manufacturing · Performance analysis</div>
+              <div style="height:100%;min-height:250px;display:grid;place-items:center;background:linear-gradient(140deg,#10263a,#126d70);padding:28px;color:white">
+                <div style="width:100%;max-width:390px">
+                  <div style="font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:#a9d8d2;font-weight:700">Production performance</div>
+                  <div style="font:800 clamp(1.5rem,3vw,2.5rem) Manrope,sans-serif;margin:12px 0 20px">From shop-floor data to useful KPIs</div>
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px">
+                    <div style="background:rgba(255,255,255,.1);padding:12px;border-radius:9px"><div style="font-size:.65rem;color:#b8d6d4">OUTPUT</div><strong style="font-size:1.2rem">kg</strong></div>
+                    <div style="background:rgba(255,255,255,.1);padding:12px;border-radius:9px"><div style="font-size:.65rem;color:#b8d6d4">PACKING</div><strong style="font-size:1.2rem">Units</strong></div>
+                    <div style="background:rgba(255,255,255,.1);padding:12px;border-radius:9px"><div style="font-size:.65rem;color:#b8d6d4">VIEW</div><strong style="font-size:1.2rem">Daily</strong></div>
+                  </div>
                 </div>
-            `).join('');
-        }
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">01 / Production intelligence</div>
+              <h3>Manufacturing Performance Analysis</h3>
+              <p>Developing a production reporting framework for a food-manufacturing line, connecting daily shop-floor records to a clearer view of output and operational performance.</p>
+              <p>The analysis follows the production flow from mixing and forming through baking, cooling and packaging, with reporting across kilograms produced and packaged units.</p>
+              <div class="tags"><span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Production KPIs</span><span class="tag">Pareto analysis</span></div>
+              <div class="project-note">Work in progress. Company identity and operational records are withheld for confidentiality; no performance improvement is claimed here.</div>
+            </div>
+          </article>
 
-        // Save Project
-        function handleSaveProject(e) {
-            e.preventDefault();
-            const editId = document.getElementById('editProjectId').value;
-            const title = document.getElementById('pTitle').value;
-            const category = document.getElementById('pCategory').value;
-            const tagLabel = document.getElementById('pTagLabel').value || category;
-            const desc = document.getElementById('pDesc').value;
-            const techStr = document.getElementById('pTech').value;
-            const tech = techStr ? techStr.split(',').map(s => s.trim()) : ['General'];
-            
-            const urlInputs = document.getElementById('pImgUrls').value;
-            let finalImages = [...modalFormImages];
+          <article class="project-card">
+            <div class="project-visual"><div class="visual-label">OOH · Ad operations</div><img src="https://raw.githubusercontent.com/Khadra-Midori/portfolio/main/Geographically.png" alt="Geographic analysis workbook screenshot" loading="lazy"></div>
+            <div class="project-body">
+              <div class="project-meta">02 / Advertising operations</div>
+              <h3>OOH Inventory & Campaign Operations</h3>
+              <p>Supported campaign execution and operational monitoring across more than 3,000 advertising placements, including inventory auditing, geo-targeting, SSP workflows, performance tracking and revenue reporting.</p>
+              <div class="tags"><span class="tag">Power BI</span><span class="tag">Vistar</span><span class="tag">Hivestack</span><span class="tag">Perion</span><span class="tag">Place Exchange</span><span class="tag">Retool</span></div>
+              <div class="project-note">FUZE Technology · Remote · June 2025 – July 2026. Screenshots and proprietary campaign data are not displayed.</div>
+            </div>
+          </article>
 
-            if (urlInputs.trim()) {
-                const parsedUrls = urlInputs.split(',').map(u => u.trim()).filter(u => u.length > 0);
-                finalImages = [...finalImages, ...parsedUrls];
-            }
+          <article class="project-card">
+            <div class="project-visual"><div class="visual-label">Excel · Business reporting</div><img src="https://raw.githubusercontent.com/Khadra-Midori/portfolio/main/Sales%20Proces.png" alt="Excel sales process and reporting dashboard screenshot" loading="lazy"></div>
+            <div class="project-body">
+              <div class="project-meta">03 / Business analytics</div>
+              <h3>Sales Process & Geographic Reporting</h3>
+              <p>An Excel reporting example presenting sales-process information and geographic views in a structured format, designed to make business data easier to review and compare.</p>
+              <div class="tags"><span class="tag">Advanced Excel</span><span class="tag">PivotTables</span><span class="tag">Data visualization</span><span class="tag">Reporting</span></div>
+              <div class="project-note">Illustrative reporting example. Figures should be interpreted in the context of the underlying sample dataset.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            if (finalImages.length === 0) {
-                finalImages = ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'];
-            }
+    <section class="content" id="expertise">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What I bring</div>
+          <h2>Useful analysis, not dashboards for decoration.</h2>
+          <p>I combine hands-on data work with an understanding of the processes behind the numbers.</p>
+        </div>
+        <div class="capabilities">
+          <article class="cap-card"><div class="cap-icon">BI</div><h3>Business intelligence</h3><p>Transforming raw and inconsistent data into structured models, clear KPIs and decision-ready Power BI reports.</p></article>
+          <article class="cap-card"><div class="cap-icon">OP</div><h3>Operational reporting</h3><p>Building practical tracking systems for production, inventory, campaign operations and day-to-day performance.</p></article>
+          <article class="cap-card"><div class="cap-icon">CI</div><h3>Process improvement</h3><p>Using process analysis, performance monitoring and structured problem-solving to identify where operations can improve.</p></article>
+        </div>
+        <div class="skill-cloud" aria-label="Technical skills">
+          <span class="skill">Power BI</span><span class="skill">DAX</span><span class="skill">Power Query</span><span class="skill">Advanced Excel</span><span class="skill">SQL</span><span class="skill">Looker Studio</span><span class="skill">KPI design</span><span class="skill">Data quality</span><span class="skill">Reporting automation</span><span class="skill">Python (developing)</span><span class="skill">Process analysis</span><span class="skill">Six Sigma fundamentals</span>
+        </div>
+      </div>
+    </section>
 
-            let projects = getProjects();
+    <section class="content experience" id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Experience</div>
+          <h2>Data skills shaped by real workflows.</h2>
+          <p>Experience across advertising operations, industrial projects and professional training.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-card"><div class="date">June 2025 – July 2026</div><h3>Remote Ad Operations Assistant</h3><div class="org">FUZE Technology</div><p>Campaign setup and tracking, inventory audits, SSP operations, geo-targeting, revenue reporting and operational dashboards across a large OOH placement portfolio.</p></article>
+          <article class="timeline-card"><div class="date">Project-based contributions</div><h3>Data Analysis & Process Improvement</h3><div class="org">VPC</div><p>Contributes to industrial and agro-food projects involving operational data analysis, planning, Excel-based reporting and production-process improvement.</p></article>
+          <article class="timeline-card"><div class="date">June 2025 – July 2026</div><h3>Advanced Excel & Microsoft Office Instructor</h3><div class="org">CLFC</div><p>Prepared training materials, practical exercises and assessments for learners developing workplace productivity and data-handling skills.</p></article>
+        </div>
+      </div>
+    </section>
 
-            if (editId) {
-                projects = projects.map(p => {
-                    if (p.id === editId) {
-                        return { ...p, title, category, tagLabel, desc, tech, images: finalImages };
-                    }
-                    return p;
-                });
-            } else {
-                const newProject = {
-                    id: Date.now().toString(),
-                    title,
-                    category,
-                    tagLabel,
-                    desc,
-                    tech,
-                    images: finalImages
-                };
-                projects.unshift(newProject);
-            }
+    <section class="content" id="credentials">
+      <div class="wrap credentials">
+        <div>
+          <div class="eyebrow">Credentials</div>
+          <h2>Technical foundation & continuous learning.</h2>
+          <p class="muted">A combination of engineering education, professional certifications and platform-specific training.</p>
+          <div class="credential-list">
+            <div class="credential"><strong>Master's & Bachelor's — Hydraulic Engineering</strong><span>Saad Dahlab University, Blida</span></div>
+            <div class="credential"><strong>ISO/IEC 27001 — Mastermind certificate</strong><span>Information security management systems</span></div>
+            <div class="credential"><strong>ISO/IEC 42001:2023 — Mastermind</strong><span>Artificial intelligence management systems · completed 2026</span></div>
+            <div class="credential"><strong>Lean Six Sigma — White Belt</strong><span>Process improvement fundamentals</span></div>
+            <div class="credential"><strong>Asana Workflow Specialist</strong><span>Collaborative work management</span></div>
+            <div class="credential"><strong>Vistar Media — Accelerate learning</strong><span>Foundations, Selling OOH, Strategic Creative and DSP Overview</span></div>
+            <div class="credential"><strong>TESOL / TEFL</strong><span>ITTI · English language teaching</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="eyebrow">Communication</div>
+          <h2>Comfortable across teams and disciplines.</h2>
+          <p class="muted">My training experience helps me explain technical findings clearly and turn processes into practical learning.</p>
+          <div class="languages">
+            <div class="language"><strong>Arabic</strong><span>Native</span></div>
+            <div class="language"><strong>English</strong><span>C1</span></div>
+            <div class="language"><strong>French</strong><span>B1–B2</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            saveProjects(projects);
-            closeProjectModal();
-        }
-
-        // Delete Project
-        function deleteProject(id) {
-            if (confirm('Are you sure you want to remove this project?')) {
-                const projects = getProjects().filter(p => p.id !== id);
-                saveProjects(projects);
-            }
-        }
-
-        // Lightbox Gallery Functions
-        function openLightboxForProject(projectId, startIdx = 0) {
-            const project = getProjects().find(p => p.id === projectId);
-            if (!project) return;
-
-            currentGallery = project.images && project.images.length > 0 ? project.images : [];
-            currentIndex = startIdx;
-            currentTitle = project.title;
-
-            document.getElementById('lbTitle').innerText = currentTitle;
-            updateLightboxView();
-
-            document.getElementById('lightboxModal').classList.remove('hidden');
-            document.getElementById('lightboxModal').classList.add('flex');
-        }
-
-        function updateLightboxView() {
-            document.getElementById('lbImage').src = currentGallery[currentIndex];
-            document.getElementById('lbCounter').innerText = `Image ${currentIndex + 1} of ${currentGallery.length}`;
-
-            const thumbsContainer = document.getElementById('lbThumbnails');
-            thumbsContainer.innerHTML = currentGallery.map((img, i) => `
-                <img src="${img}" class="h-12 w-16 object-cover rounded border-2 ${i === currentIndex ? 'border-brand-500 scale-105' : 'border-transparent opacity-60'} cursor-pointer transition" onclick="jumpToImage(${i})">
-            `).join('');
-        }
-
-        function nextImage() {
-            currentIndex = (currentIndex + 1) % currentGallery.length;
-            updateLightboxView();
-        }
-
-        function prevImage() {
-            currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-            updateLightboxView();
-        }
-
-        function jumpToImage(idx) {
-            currentIndex = idx;
-            updateLightboxView();
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightboxModal').classList.add('hidden');
-            document.getElementById('lightboxModal').classList.remove('flex');
-        }
-
-        // Keyboard Navigation for Lightbox & Escape
-        document.addEventListener('keydown', (e) => {
-            const modal = document.getElementById('lightboxModal');
-            if (modal && !modal.classList.contains('hidden')) {
-                if (e.key === 'ArrowRight') nextImage();
-                if (e.key === 'ArrowLeft') prevImage();
-                if (e.key === 'Escape') closeLightbox();
-            }
-        });
-    </script>
+    <section class="content contact" id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div><div class="eyebrow">Start a conversation</div><h2>Have an operational data problem?</h2><p>I'm interested in BI, reporting and process-analysis opportunities with teams that want to make better use of their operational data.</p></div>
+          <div class="contact-actions"><a class="button" href="https://www.linkedin.com/in/khadra-djadja-13aba11b2/" target="_blank" rel="noopener noreferrer">Message me on LinkedIn ↗</a><a class="button secondary" href="https://github.com/Khadra-Midori" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><span>© <span id="year"></span> Khadra Djadja</span><span>Business Intelligence · Operational Performance · Process Improvement</span></div></footer>
+  <script>
+    const menuBtn=document.getElementById('menuBtn');
+    const navLinks=document.getElementById('navLinks');
+    menuBtn.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));});
+    navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}));
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
 </body>
 </html>

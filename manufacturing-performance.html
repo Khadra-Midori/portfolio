@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A manufacturing performance analysis case study by Khadra Djadja, covering shop-floor data, Power BI, DAX and production KPIs.">
+<title>Manufacturing Performance Analysis | Khadra Djadja</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#142238;--muted:#607086;--paper:#f7f8fa;--white:#fff;--line:#e4e9ef;--teal:#087f82;--navy:#101b2d;--gold:#d5a85b}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "DM Sans",sans-serif}a{color:var(--teal);text-decoration:none;font-weight:700}.wrap{width:min(900px,calc(100% - 40px));margin:auto}.top{padding:23px 0;border-bottom:1px solid var(--line)}.brand{color:var(--ink);font:800 1rem Manrope,sans-serif}.hero{padding:78px 0 60px;background:linear-gradient(135deg,#101b2d,#145d63);color:white}.eyebrow{color:#9edbd2;text-transform:uppercase;letter-spacing:.13em;font-size:.75rem;font-weight:700}.hero h1{font:800 clamp(2.4rem,6vw,4.5rem)/1.1 Manrope,sans-serif;letter-spacing:-.04em;max-width:760px;margin:18px 0}.hero p{color:#d3e0e7;max-width:690px;font-size:1.1rem}.meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.meta span{border:1px solid #ffffff38;border-radius:7px;padding:6px 10px;font-size:.78rem;color:#e3eff1}.content{padding:58px 0}.intro{font-size:1.12rem;color:#405269}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:26px 0}.tile{background:white;border:1px solid var(--line);border-radius:14px;padding:22px}.tile strong{display:block;font:700 1.08rem Manrope,sans-serif;margin-bottom:6px}.tile p{margin:0;color:var(--muted);font-size:.91rem}h2{font:800 1.8rem Manrope,sans-serif;letter-spacing:-.03em;margin:42px 0 13px}h3{font:700 1.12rem Manrope,sans-serif;margin:22px 0 8px}p,li{color:#526278}ul{padding-left:21px}.flow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:20px 0}.flow span{background:#e7f2f1;color:#17686a;padding:10px 13px;border-radius:8px;font-weight:700;font-size:.86rem}.flow b{color:#9aa8b5}.callout{padding:17px 19px;background:#fbf7ed;border-left:3px solid var(--gold);border-radius:0 9px 9px 0;color:#6d624f;margin:22px 0}.kpi{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:20px 0}.kpi th,.kpi td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);font-size:.9rem}.kpi th{background:#edf3f5;color:#33485d}.kpi td{color:#53647a}.footer{background:var(--navy);color:#b7c6d3;padding:28px 0;font-size:.85rem}.footer a{color:#9edbd2}@media(max-width:620px){.hero{padding:55px 0 45px}.grid{grid-template-columns:1fr}.content{padding:40px 0}.kpi{display:block;overflow-x:auto;white-space:nowrap}}
+</style></head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="/">← Khadra Djadja / Portfolio</a></div></header>
+<section class="hero"><div class="wrap"><div class="eyebrow">Selected case study · Manufacturing intelligence</div><h1>Making production performance visible.</h1><p>Turning daily shop-floor records into a structured reporting framework for a biscuit production line — from raw material preparation through packaging.</p><div class="meta"><span>Power BI</span><span>DAX</span><span>Excel</span><span>Operational KPIs</span><span>Food manufacturing</span></div></div></section>
+<main class="wrap content">
+<p class="intro">This project focuses on a practical problem common in manufacturing: production information exists, but managers need a consistent way to understand output, losses and performance across the full process. The work combines production-process understanding with data modelling and KPI reporting.</p>
+<div class="grid">
+<div class="tile"><strong>Business context</strong><p>One biscuit production line with plain and sandwich product variants. The sandwich process adds a dedicated sandwiching machine while sharing the broader line flow.</p></div>
+<div class="tile"><strong>Data environment</strong><p>Daily operational records captured through a combination of Excel and paper-based reporting, consolidated for analysis.</p></div>
+<div class="tile"><strong>Units of analysis</strong><p>Production is tracked in kilograms and packaged output, including sachet and piece-level measures where recorded.</p></div>
+<div class="tile"><strong>Analytical objective</strong><p>Establish a reliable baseline, make daily performance easier to monitor and identify where further investigation is warranted.</p></div>
+</div>
+<h2>1. Understand the process before measuring it</h2>
+<p>The reporting logic follows the physical production flow rather than treating the factory as one undifferentiated output figure.</p>
+<div class="flow"><span>Mixing</span><b>→</b><span>Forming</span><b>→</b><span>Baking</span><b>→</b><span>Cooling</span><b>→</b><span>Packaging</span></div>
+<p>Product type matters: plain and sandwich biscuits share the same broader line and packaging context, but sandwich production introduces an additional process step. A useful model therefore preserves product type as an analytical dimension instead of hiding it inside a single total.</p>
+<h2>2. Structure the daily data</h2>
+<p>The Power BI model is centred on the <strong>Saisie_Journaliere</strong> table. The working dataset includes a date field and operational measures such as total dough in kilograms, packaged sachets, produced pieces and waste percentage, alongside additional target, variance and production-efficiency fields where supplied.</p>
+<p>Before interpreting the results, the model requires validation of the date grain, units, percentage scale, missing days, variance sign conventions and the meaning of each target. Derived values must be labelled as estimates rather than presented as directly recorded facts.</p>
+<div class="callout"><strong>Data-quality principle:</strong> A KPI is only as reliable as its definition and source fields. Where a measure depends on an assumption — for example, inferring cartons from pieces — that assumption must be visible in the report.</div>
+<h2>3. KPI framework</h2>
+<table class="kpi"><thead><tr><th>Area</th><th>Questions the report should answer</th><th>Measures</th></tr></thead><tbody>
+<tr><td>Output</td><td>How much was produced, and how does output vary over time?</td><td>Total kg, sachets, pieces; daily and monthly trends</td></tr>
+<tr><td>Waste</td><td>How much material is lost, and when does the loss rate change?</td><td>Waste rate, estimated waste quantity where inputs support it, waste trend</td></tr>
+<tr><td>Target performance</td><td>Is actual output meeting the defined production target?</td><td>Target achievement, output gap, variance to target</td></tr>
+<tr><td>Packaging</td><td>How does production translate into packaged units?</td><td>Sachets, pieces and cartons where the conversion rule is confirmed</td></tr>
+<tr><td>Efficiency</td><td>How does throughput compare across operating periods?</td><td>Pieces per hour and machine utilisation when valid time and runtime fields exist</td></tr>
+<tr><td>Prioritisation</td><td>Which loss categories or periods deserve investigation first?</td><td>Pareto analysis and ranked contributors, when reason-coded loss data exists</td></tr>
+</tbody></table>
+<h2>4. Dashboard design</h2>
+<ul>
+<li><strong>Executive overview:</strong> headline output, waste, target achievement and period-over-period trend.</li>
+<li><strong>Production trend:</strong> daily and monthly output with product-type filters.</li>
+<li><strong>Waste analysis:</strong> waste rate and quantity trends, with a Pareto view only when loss categories are captured consistently.</li>
+<li><strong>Packaging analysis:</strong> relationship between kilograms, sachets and pieces, using verified conversion rules.</li>
+<li><strong>Operational drill-down:</strong> investigate days or stages that explain a change in performance.</li>
+</ul>
+<h2>5. What this analysis is designed to enable</h2>
+<p>The reporting framework is intended to help production and management teams move from scattered daily figures to a shared view of operational performance. It supports more focused questions about output variation, waste, packaging and the points in the process that warrant investigation.</p>
+<p>It does not, by itself, prove that a particular intervention caused an improvement. Causal claims require a defined baseline, comparable operating conditions, reliable downtime and loss records, and post-intervention measurement.</p>
+<div class="callout"><strong>Project status and confidentiality:</strong> This is an active analytical project. The company name, raw records, commercially sensitive figures and unverified improvement claims are intentionally omitted. The public case study describes the analytical approach, not confidential factory results.</div>
+<h2>Tools and methods</h2>
+<div class="meta"><span style="background:#e7f2f1;color:#17686a;border-color:#d6e9e6">Power BI</span><span style="background:#e7f2f1;color:#17686a;border-color:#d6e9e6">DAX</span><span style="background:#e7f2f1;color:#17686a;border-color:#d6e9e6">Excel</span><span style="background:#e7f2f1;color:#17686a;border-color:#d6e9e6">Data validation</span><span style="background:#e7f2f1;color:#17686a;border-color:#d6e9e6">Process analysis</span></div>
+</main>
+<footer class="footer"><div class="wrap">Khadra Djadja · Business Intelligence & Operational Performance · <a href="/">Back to portfolio</a></div></footer>
+</body></html>
